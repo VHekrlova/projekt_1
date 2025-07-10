@@ -50,5 +50,46 @@ else:
     print("Neplatné přihlašovací údaje. Program se ukončuje.")
     exit()
 
-#Výběr textu k analýze
+# Výběr textu k analýze
 choice = input("Zadej číslo textu, který chceš analyzovat (1, 2, 3): ")    
+
+if not choice.isdigit():
+    print("Nezadal jsi číslo. Program se ukončuje.")
+    exit()
+
+choice = int(choice)
+
+if choice not in range(1, len(TEXTS) + 1):
+    print("Zadané číslo není v rozsahu dostupných textů. Program se ukončuje.")
+    exit()
+
+# Analýza textu
+
+text = TEXTS[choice - 1]
+words = text.split()
+
+word_count = 0
+tittlecase = 0
+uppercase = 0
+lowercase = 0
+digit = 0
+digit_sum = 0
+
+for word in words:
+    word = word.strip('.,?!')
+    print(word)
+    word_count = word_count + 1
+
+    if word.istitle():
+        tittlecase = tittlecase + 1
+    elif word.isupper():
+        uppercase = uppercase + 1
+    elif word.islower():
+        lowercase = lowercase + 1
+    elif word.isdigit():
+        digit = digit + 1
+        digit_sum = digit_sum + int(word)    
+
+print(word_count, tittlecase, uppercase, lowercase, digit, digit_sum)                
+
+
