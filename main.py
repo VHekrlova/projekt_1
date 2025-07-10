@@ -41,26 +41,27 @@ users = {
 }
 
 # Přihlašovací údaje
-username = input("Zadejte uživatelské jméno: ")
-password = input("Zadej heslo: ")
+username = input("username: ")
+password = input("password: ")
 
 if username in users and users[username] == password:
-    print(f"Vítej, {username}! Máš k dispozici 3 texty k analýze.")
+    print(f"Welcome to the app {username}!")
+    print(f"We have {len(TEXTS)} texts to be analysed.")
 else:
-    print("Neplatné přihlašovací údaje. Program se ukončuje.")
+    print("unregistered user, terminating the program.")
     exit()
 
 # Výběr textu k analýze
-choice = input("Zadej číslo textu, který chceš analyzovat (1, 2, 3): ")    
+choice = input(f"Enter the number between 1 and {len(TEXTS)} to select: ")    
 
 if not choice.isdigit():
-    print("Nezadal jsi číslo. Program se ukončuje.")
+    print("Invalid input. You must enter a number. Terminating the program.")
     exit()
 
 choice = int(choice)
 
 if choice not in range(1, len(TEXTS) + 1):
-    print("Zadané číslo není v rozsahu dostupných textů. Program se ukončuje.")
+    print("Invalid input. The number is out of range. Terminating a program.")
     exit()
 
 # Analýza textu
@@ -78,7 +79,6 @@ length_freq = {}
 
 for word in words:
     word = word.strip('.,?!')
-    print(word)
     word_count = word_count + 1
     length = len(word)
     length_freq[length] = length_freq.get(length, 0) + 1
@@ -101,7 +101,7 @@ print(f"There are {titlecase} titlecase words.")
 print(f"There are {uppercase} uppercase words.")
 print(f"There are {lowercase} lowercase words.")
 print(f"There are {digit} numeric strings.")
-print(f"The sum of all the numbers {digit_sum}")
+print(f"The sum of all the numbers {digit_sum}.")
 print("----------------------------------------")
 
 print("LEN|  OCCURENCES  |NR.")
