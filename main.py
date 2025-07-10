@@ -40,11 +40,15 @@ users = {
     "liz": "pass123"
 }
 
-print(users)
-
 # Přihlašovací údaje
 username = input("Zadejte uživatelské jméno: ")
 password = input("Zadej heslo: ")
 
-if username in users:
-    print('Vítej', username)
+if username in users and users[username] == password:
+    print(f"Vítej, {username}! Máš k dispozici 3 texty k analýze.")
+else:
+    print("Neplatné přihlašovací údaje. Program se ukončuje.")
+    exit()
+
+#Výběr textu k analýze
+choice = input("Zadej číslo textu, který chceš analyzovat (1, 2, 3): ")    
