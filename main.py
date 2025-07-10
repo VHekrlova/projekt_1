@@ -69,27 +69,45 @@ text = TEXTS[choice - 1]
 words = text.split()
 
 word_count = 0
-tittlecase = 0
+titlecase = 0
 uppercase = 0
 lowercase = 0
 digit = 0
 digit_sum = 0
+length_freq = {}
 
 for word in words:
     word = word.strip('.,?!')
     print(word)
     word_count = word_count + 1
+    length = len(word)
+    length_freq[length] = length_freq.get(length, 0) + 1
 
     if word.istitle():
-        tittlecase = tittlecase + 1
+        titlecase = titlecase + 1
     elif word.isupper():
         uppercase = uppercase + 1
     elif word.islower():
         lowercase = lowercase + 1
     elif word.isdigit():
         digit = digit + 1
-        digit_sum = digit_sum + int(word)    
+        digit_sum = digit_sum + int(word)  
+           
 
-print(word_count, tittlecase, uppercase, lowercase, digit, digit_sum)                
 
+# Výstup
+print(f"There are {word_count} words in the selected text.")
+print(f"There are {titlecase} titlecase words.")
+print(f"There are {uppercase} uppercase words.")
+print(f"There are {lowercase} lowercase words.")
+print(f"There are {digit} numeric strings.")
+print(f"The sum of all the numbers {digit_sum}")
+print("----------------------------------------")
 
+print("LEN|  OCCURENCES  |NR.")
+print("----------------------------------------")
+
+for length in sorted(length_freq):
+    count = length_freq[length]
+    stars = "*" * count
+    print(f"{length:>3}|{stars:<18}|{count}")
