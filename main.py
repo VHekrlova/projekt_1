@@ -33,7 +33,7 @@ TEXTS = [
 ]
 
 # Registrovaní uživatelé
-uzivatele = {
+users = {
     "bob": "123",
     "ann": "pass123",
     "mike": "password123",
@@ -41,3 +41,10 @@ uzivatele = {
 }
 
 print(users)
+
+# Přihlašovací údaje
+username = input("Zadejte uživatelské jméno: ")
+password = input("Zadej heslo: ")
+
+if username in users:
+    print('Vítej', username)
